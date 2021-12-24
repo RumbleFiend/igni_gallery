@@ -15,6 +15,10 @@ function App() {
       await addDoc(usersCollectionRef, { name: newName, age: Number(newAge) });
       window.location.reload();
     }
+    else
+    {
+
+    }
     
   };
 
@@ -55,12 +59,12 @@ function App() {
           return (
             <div className="users" key={user.name}>
               <div>
-                <h1>Name : {user.name}</h1> <p className="items"></p>
+                <h3>Name : {user.name}</h3> 
               </div>
               <div>
-                <h1>Age : {user.age}</h1> <p className="items"></p>
+                <h3>Age : {user.age}</h3>
               </div>
-              <button className="button-82-pushable" onClick={()=>{deleteUser(user.id)}}> 
+              <button className="button-82-pushable buttons" onClick={()=>{deleteUser(user.id)}}> 
                 <span className="button-82-shadow"></span>
                 <span className="button-82-edge"></span>
                 <span className="button-82-front text">Delete user</span>
