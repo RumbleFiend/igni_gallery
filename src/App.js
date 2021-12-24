@@ -41,7 +41,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="users-container">
+      <div className="container">
         <input
           className="inputs"
           type="text"
@@ -57,7 +57,7 @@ function App() {
             setNewAge(event.target.value);
           }}
         />
-        <button className="buttons" onClick={createUser}>
+        <button className="buttons inputs" onClick={createUser}>
           Create user
         </button>
       </div>
@@ -73,14 +73,12 @@ function App() {
                 <h3>Age : {user.age}</h3>
               </div>
               <button
-                className="button-82-pushable"
+              className="buttons"
                 onClick={() => {
                   deleteUser(user.id);
                 }}
               >
-                <span className="button-82-shadow"></span>
-                <span className="button-82-edge"></span>
-                <span className="button-82-front text">Delete user</span>
+                <span>Delete user</span>
               </button>
             </div>
           );
