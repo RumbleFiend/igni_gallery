@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import { db } from "./firebase/config";
-import { collection, getDocs, addDoc, deleteDoc, doc } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  addDoc,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 
 function App() {
   const [newName, setNewName] = useState("");
@@ -11,18 +17,14 @@ function App() {
   const usersCollectionRef = collection(db, "users");
 
   const createUser = async () => {
-    if((newName !== "") && (newAge !==0)){
+    if (newName !== "" && newAge !== 0) {
       await addDoc(usersCollectionRef, { name: newName, age: Number(newAge) });
       window.location.reload();
+    } else {
     }
-    else
-    {
-
-    }
-    
   };
 
-  const deleteUser = async (id) =>{
+  const deleteUser = async (id) => {
     const userDoc = doc(db, "users", id);
     await deleteDoc(userDoc);
     window.location.reload();
@@ -39,32 +41,43 @@ function App() {
 
   return (
     <div className="App">
-      <input
-        type="text"
-        placeholder="Name"
-        onChange={(event) => {
-          setNewName(event.target.value);
-        }}
-      />
-      <input
-        placeholder="Age"
-        onChange={(event) => {
-          setNewAge(event.target.value);
-        }}
-      />
-      <button onClick={createUser}>Create user</button>
+      <div className="users-container">
+        <input
+          className="inputs"
+          type="text"
+          placeholder="Name"
+          onChange={(event) => {
+            setNewName(event.target.value);
+          }}
+        />
+        <input
+          className="inputs"
+          placeholder="Age"
+          onChange={(event) => {
+            setNewAge(event.target.value);
+          }}
+        />
+        <button className="buttons" onClick={createUser}>
+          Create user
+        </button>
+      </div>
 
       <div className="users-container">
         {users.map((user) => {
           return (
             <div className="users" key={user.name}>
               <div>
-                <h3>Name : {user.name}</h3> 
+                <h3>Name : {user.name}</h3>
               </div>
               <div>
                 <h3>Age : {user.age}</h3>
               </div>
-              <button className="button-82-pushable buttons" onClick={()=>{deleteUser(user.id)}}> 
+              <button
+                className="button-82-pushable"
+                onClick={() => {
+                  deleteUser(user.id);
+                }}
+              >
                 <span className="button-82-shadow"></span>
                 <span className="button-82-edge"></span>
                 <span className="button-82-front text">Delete user</span>
