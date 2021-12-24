@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import { db } from "./firebase/config";
-import { collection, getDocs, addDoc } from "firebase/firestore";
+import { collection, getDocs, addDoc, deleteDoc, doc } from "firebase/firestore";
 
 function App() {
   const [newName, setNewName] = useState("");
@@ -11,7 +11,17 @@ function App() {
   const usersCollectionRef = collection(db, "users");
 
   const createUser = async () => {
-    await addDoc(usersCollectionRef, {name: newName, age: newAge});
+    if((newName !== "") && (newAge !==0)){
+      await addDoc(usersCollectionRef, { name: newName, age: Number(newAge) });
+      window.location.reload();
+    }
+    
+  };
+
+  const deleteUser = async (id) =>{
+    const userDoc = doc(db, "users", id);
+    await deleteDoc(userDoc);
+    window.location.reload();
   };
 
   useEffect(() => {
@@ -44,8 +54,17 @@ function App() {
         {users.map((user) => {
           return (
             <div className="users" key={user.name}>
-              <h1>Name : {user.name}</h1>
-              <h1>Age : {user.age}</h1>
+              <div>
+                <h1>Name : {user.name}</h1> <p className="items"></p>
+              </div>
+              <div>
+                <h1>Age : {user.age}</h1> <p className="items"></p>
+              </div>
+              <button className="button-82-pushable" onClick={()=>{deleteUser(user.id)}}> 
+                <span className="button-82-shadow"></span>
+                <span className="button-82-edge"></span>
+                <span className="button-82-front text">Delete user</span>
+              </button>
             </div>
           );
         })}
