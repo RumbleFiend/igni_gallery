@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./App.css";
+import "./assets/styles/App.css";
 import { db } from "./firebase/config";
 import {
   collection,
@@ -8,6 +8,7 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
+import { Link } from "react-router-dom";
 
 function App() {
   const [newName, setNewName] = useState("");
@@ -42,6 +43,17 @@ function App() {
   return (
     <div className="App">
       <div className="container">
+        <h1>Igni Gallery</h1>
+        <nav
+          style={{
+            borderBottom: "solid 1px",
+            paddingBottom: "1rem",
+          }}
+        >
+          <Link to="/login">Login</Link> 
+        </nav>
+      </div>
+      <div className="container">
         <input
           className="inputs"
           type="text"
@@ -73,7 +85,7 @@ function App() {
                 <h3>Age : {user.age}</h3>
               </div>
               <button
-              className="buttons"
+                className="buttons"
                 onClick={() => {
                   deleteUser(user.id);
                 }}
