@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 export default function Login(){
+  return(
   <form>
     <h3>Sign In</h3>
 
@@ -37,6 +38,6 @@ export default function Login(){
     <p className="forgot-password text-right">
       Forgot <a href="#">password?</a>
     </p>
-  </form>;
+  </form>);
 };
 
