@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 export default function Login(){
   return(
-  <form>
+  <form className="container">
     <h3>Sign In</h3>
 
     <div className="form-group">

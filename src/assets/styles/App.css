@@ -1,12 +1,21 @@
 .App {
   text-align: center;
+  width: 100%;
+  height: 100%;
+}
+.colored-back{
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.links{
+  color: white;
+  font-weight: bold;
 }
 .container{
   align-self: center;
   position: relative;
   width:50%;
   height:50%;
-  border: 2px solid black;
+  border: 2px solid white;
   padding-bottom: 5px;
   padding-left: -10px;
   padding-right: -10px;  
@@ -24,7 +33,7 @@
 .inputs{
   width: auto;
   height: auto;
-  border: 2px solid black;
+  border: 2px solid white;
   margin: 10px 10px 10px 10px;
 
 }
@@ -37,9 +46,25 @@
   justify-self: center;
   width: auto;
   height: auto;
-  border: 2px solid black;
+  border: 2px solid white;
   margin: 10px 10px 10px 10px;
 
+}
+/* cercle de chargement de données */
+.loader {     
+  position: absolute;
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  right: 45%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /*  button CSS */
@@ -47,7 +72,7 @@
   justify-self: center;
   width: auto;
   height: auto;
-  border: 2px solid black;
+  border: 2px solid white;
   margin: 10px 10px 10px 10px;
 }
 

@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 function App() {
   const [newName, setNewName] = useState("");
   const [newAge, setNewAge] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   const [users, setUsers] = useState([]);
   const usersCollectionRef = collection(db, "users");
@@ -34,6 +35,7 @@ function App() {
   useEffect(() => {
     const getUsers = async () => {
       const data = await getDocs(usersCollectionRef);
+      setLoading(false);
       setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getUsers();
@@ -42,18 +44,30 @@ function App() {
 
   return (
     <div className="App">
-      <div className="container">
+      <div className="container colored-back">
         <h1>Igni Gallery</h1>
         <nav
           style={{
-            borderBottom: "solid 1px",
+            borderBottom: "solid 2px",
             paddingBottom: "1rem",
+            borderTop: "solid 2px",
+            paddingTop: "1rem",
           }}
         >
-          <Link to="/login">Login</Link> 
+          <Link className="links" to="/login">
+            Home
+          </Link>{" "}
+          |{" "}
+          <Link className="links" to="/login">
+            Gallery
+          </Link>{" "}
+          |{" "}
+          <Link className="links" to="/login">
+            Login
+          </Link>{" "}
         </nav>
       </div>
-      <div className="container">
+      <div className="container colored-back">
         <input
           className="inputs"
           type="text"
@@ -75,9 +89,10 @@ function App() {
       </div>
 
       <div className="users-container">
+        <Loading loading={loading}></Loading>
         {users.map((user) => {
           return (
-            <div className="users" key={user.name}>
+            <div className="users colored-back" key={user.name}>
               <div>
                 <h3>Name : {user.name}</h3>
               </div>
@@ -99,5 +114,10 @@ function App() {
     </div>
   );
 }
+
+function Loading(props) {
+  return props.loading ?  <div class="loader"></div> : <div></div>
+}
+
 
 export default App;
