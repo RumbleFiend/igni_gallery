@@ -8,7 +8,7 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
-import { Link } from "react-router-dom";
+
 
 function App() {
   const [newName, setNewName] = useState("");
@@ -40,7 +40,7 @@ function App() {
     };
     getUsers();
     return () => {};
-  }, []);
+  });
 
   return (
     <div className="App">
@@ -91,8 +91,8 @@ function App() {
   );
 }
 
-function Loading(props) {
-  return props.loading ?  <div class="loader"></div> : <div></div>
+function Loading(props) { /*cercle de chargement*/
+  return props.loading ?  <div className="loader"></div> : <div></div>
 }
 
 
