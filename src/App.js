@@ -45,29 +45,6 @@ function App() {
   return (
     <div className="App">
       <div className="container colored-back">
-        <h1>Igni Gallery</h1>
-        <nav
-          style={{
-            borderBottom: "solid 2px",
-            paddingBottom: "1rem",
-            borderTop: "solid 2px",
-            paddingTop: "1rem",
-          }}
-        >
-          <Link className="links" to="/login">
-            Home
-          </Link>{" "}
-          |{" "}
-          <Link className="links" to="/login">
-            Gallery
-          </Link>{" "}
-          |{" "}
-          <Link className="links" to="/login">
-            Login
-          </Link>{" "}
-        </nav>
-      </div>
-      <div className="container colored-back">
         <input
           className="inputs"
           type="text"
@@ -87,9 +64,8 @@ function App() {
           Create user
         </button>
       </div>
-
+      <Loading loading={loading}></Loading>
       <div className="users-container">
-        <Loading loading={loading}></Loading>
         {users.map((user) => {
           return (
             <div className="users colored-back" key={user.name}>

@@ -59,6 +59,7 @@
   width: 120px;
   height: 120px;
   right: 45%;
+  top:50%;
   animation: spin 1s linear infinite;
 }
 
