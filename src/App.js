@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./assets/styles/App.css";
+import './assets/styles/gallery.css';
 import { db } from "./firebase/config";
 import {
   collection,

@@ -2,7 +2,7 @@
 
 import * as firebase from "firebase/app";
 import { getFirestore } from "@firebase/firestore";
-import { getStorage, ref } from "firebase/storage";
+import { getStorage } from "firebase/storage";
 
 
 // TODO: Add SDKs for Firebase products that you want to use
