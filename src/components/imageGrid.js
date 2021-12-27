@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import useFirestore from '../hooks/useFirestore';
 
 
-const ImageGrid = () => {
+const ImageGrid = ({ setSelectedImg }) => {
     const [loading, setLoading] = useState(true);
     const { docs } = useFirestore('images');
     console.log(docs);
@@ -13,7 +13,7 @@ const ImageGrid = () => {
         <div className='img-grid'>
             <Loading loading={loading}></Loading>
             {docs && docs.map(doc => (
-                <div className='img-wrap' key={doc.id}>
+                <div className='img-wrap' key={doc.id} onClick={() => setSelectedImg(doc.url)}>
                     <img src={doc.url} alt="uploaded"></img>
                 </div>
             ))}
