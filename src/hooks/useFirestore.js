@@ -11,6 +11,14 @@ import {
   query,
 } from "firebase/firestore";
 
+
+const deleteItem = async (folder,id) => {
+    console.log(folder);
+    const itemDoc = doc(db, folder, id);
+    console.log(itemDoc);
+    await deleteDoc(itemDoc);
+};
+
 const useFirestore = (c) => {
   const [docs, setDocs] = useState([]);
   const collectionRef = collection(db, c);
@@ -29,5 +37,5 @@ const useFirestore = (c) => {
 
   return { docs };
 };
-
+export {deleteItem};
 export default useFirestore;

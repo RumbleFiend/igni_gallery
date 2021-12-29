@@ -1,3 +1,22 @@
+
+.gallery{
+  display: grid; 
+  position:relative;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 100px;
+}
+.gallery h1{
+  justify-self: center;
+  align-self:center;
+}
+@media screen and (max-width: 768px) {
+
+  
+}
+
 .custom-file-input::-webkit-file-upload-button {
   visibility: hidden;
 }
@@ -17,7 +36,7 @@
   font-size: 10pt;
 }
 .custom-file-input:hover::before {
-  border-color: black;
+  border-color: var(--second);
 }
 .custom-file-input:active::before {
   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
@@ -25,24 +44,45 @@
 
 .label-file {
   cursor: pointer;
-  color: #00b1ca;
+  color: var(--third);
+  border: var(--third) solid 4px;
   font-weight: bold;
-  line-height: 100px;
+  line-height: 70px;
+  width: 200px;
+  height: 150px;
+  transition: all 0.2s ease-in-out;
+  border-radius: 30px;
 }
 .label-file:hover {
-  color: #25a5c4;
+  background: var(--fourth);
+  color: var(--third);
+  transition: all 0.2s ease-in-out;
 }
 
 .input-file {
   display: none;
 }
-
+.gallery-form{
+  display:grid;
+}
 .input-form {
-  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-self: center;
+  align-self:center;
+  background-color:var(--main);
   justify-content: center;
+  align-items: center;
   text-align: center;
-  width: 300px;
-  height: 200px;
+  width: 200px;
+  height: 150px;
+  border-radius: 30px;
+}
+
+.output{
+  align-items: center;
+  justify-content: center;
+  padding-top:20px;
+  padding-bottom: 20px;
 }
 
 /* image grid styles */
@@ -74,6 +114,10 @@
 }
 
 /* modal styles */
+.modal{
+ 
+  align-items: center;
+}
 .backdrop {
   position: fixed;
   top: 0;
@@ -94,3 +138,25 @@
 .backdrop img:hover{
     cursor: pointer;
 }
+
+ /* delete Button */
+ .dropbtn {
+  display: block;
+  background-color: var(--second);
+  color: var(--third);
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  margin: 60px auto;
+  transition: all 0.2s ease-in-out;
+}
+
+/* delete button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  background-color: var(--fourth);
+  transition: all 0.2s ease-in-out;
+}
+
+
+

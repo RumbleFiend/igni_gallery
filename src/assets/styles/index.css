@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora&display=swap');
 
+:root{
+  --main: #222831;
+  --second:#2D4059;
+  --third: #FF5722;
+  --fourth: #EEEEEE;
+}
+
 body {
   margin: 10px;
   padding-left: 10px;
@@ -9,21 +16,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("../../../public/background.jpg");
-  background-size: cover;
-  color: rgb(255, 255, 255);
+  background-color: var(--main);
+  color: var(--fourth);
   height:auto;
   width:auto;
+  padding-right: 40px;
+  padding-left: 40px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-.main{
-  padding: 100px;
-  margin: 0 auto;
-  width: 100px;
-  height: 100px;
 }

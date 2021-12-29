@@ -6,15 +6,27 @@ import Modal from "../components/modal";
 
 export default function Gallery() {
   const [selectedImg, setSelectedImg] = useState(null);
-
+  const [selectedId, setSelectedId] = useState(null);
 
   return (
     <div>
-      <div className="main">
+      <div className="gallery">
         <UploadForm />
       </div>
-      <ImageGrid setSelectedImg={setSelectedImg} />
-      {selectedImg && <Modal selectedImg={ selectedImg } setSelectedImg={setSelectedImg} />}
+      <ImageGrid
+        setSelectedImg={setSelectedImg}
+        setSelectedId={setSelectedId}
+      />
+      <div className="modal">
+        {selectedImg && (
+          <Modal
+            selectedImg={selectedImg}
+            selectedId={selectedId}
+            setSelectedImg={setSelectedImg}
+            setSelectedId={setSelectedId}
+          />
+        )}
+      </div>
     </div>
   );
 }
