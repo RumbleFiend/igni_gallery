@@ -1,7 +1,24 @@
 import { useState, useEffect } from "react";
 import { projectStorage, db } from "../firebase/config";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import {
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+  deleteObject,
+} from "firebase/storage";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
+
+const delImg = (folder, imgName) => {
+  const imgRef = ref(projectStorage, folder + "/" + imgName);
+  // Delete the file
+  deleteObject(imgRef)
+    .then(() => {
+      return true;
+    })
+    .catch((error) => {
+      return error;
+    });
+};
 
 const useStorage = (file) => {
   const [progress, setProgress] = useState(0);
@@ -26,9 +43,10 @@ const useStorage = (file) => {
       },
       async () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          const fileName = file.name;
           const url = downloadURL; //L'URL du fichier
           const createdAt = Timestamp.fromDate(now);
-          addDoc(collectionRef, { url, createdAt });
+          addDoc(collectionRef, { fileName, url, createdAt });
           setUrl(url);
           console.log("URL set");
         });
@@ -39,4 +57,5 @@ const useStorage = (file) => {
   return { progress, url, error };
 };
 
+export { delImg };
 export default useStorage;

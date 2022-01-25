@@ -6,7 +6,6 @@ import Modal from "../components/modal";
 
 export default function Gallery() {
   const [selectedImg, setSelectedImg] = useState(null);
-  const [selectedId, setSelectedId] = useState(null);
 
   return (
     <div>
@@ -15,15 +14,12 @@ export default function Gallery() {
       </div>
       <ImageGrid
         setSelectedImg={setSelectedImg}
-        setSelectedId={setSelectedId}
       />
       <div className="modal">
         {selectedImg && (
           <Modal
             selectedImg={selectedImg}
-            selectedId={selectedId}
             setSelectedImg={setSelectedImg}
-            setSelectedId={setSelectedId}
           />
         )}
       </div>

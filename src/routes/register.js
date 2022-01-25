@@ -1,51 +1,32 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import '../assets/styles/register.css';
 
 export default function Register() {
   return (
-    <form className="container">
-      <h3>Sign In</h3>
-
-      <div className="form-group">
-        <label>Email address</label>
-        <input
-          type="email"
-          className="form-control"
-          placeholder="Enter email"
-        />
-      </div>
-
-      <div className="form-group">
-        <label>Password</label>
-        <input
-          type="password"
-          className="form-control"
-          placeholder="Enter password"
-        />
-      </div>
-
-      <div className="form-group">
-        <div className="custom-control custom-checkbox">
-          <input
-            type="checkbox"
-            className="custom-control-input"
-            id="customCheck1"
-          />
-          <label className="custom-control-label" htmlFor="customCheck1">
-            Remember me
-          </label>
-        </div>
-      </div>
-
-      <button type="submit" className="btn btn-primary btn-block">
-        Submit
-      </button>
-      <p className="forgot-password text-right">
-        Forgot <a href="#">password?</a>
-      </p>
-      <Link className="links" to="/">
-            Go Back
-      </Link>{" "}
-    </form>
+    <form action="action_page.php">
+    <div className="container">
+      <h1>Register</h1>
+      <p>Please fill in this form to create an account.</p>
+      <hr />
+  
+      <label for="email"><b>Email</b></label>
+      <input type="email" placeholder="Enter Email" name="email" id="email" required />
+  
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" id="psw" required />
+  
+      <label for="psw-repeat"><b>Repeat Password</b></label>
+      <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required />
+      <hr />
+  
+      <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+      <button type="submit" className="registerbtn">Register</button>
+    </div>
+  
+    <div className="container signin">
+      <p>Already have an account? <a href="login">Sign in</a>.</p>
+    </div>
+  </form> 
   );
 }

@@ -3,22 +3,21 @@ import useFirestore from '../hooks/useFirestore';
 import '../assets/styles/App.css';
 
 
-const ImageGrid = ({ setSelectedImg, setSelectedId }) => {
+const ImageGrid = ({ setSelectedImg}) => {
     const [loading, setLoading] = useState(true);
     const { docs } = useFirestore('images');
     console.log(docs);
     useEffect(() => {
         setLoading(false);
     }, [docs]);
-    const handleClick = (url,id) =>{
-        setSelectedImg(url);
-        setSelectedId(id);
+    const handleClick = (fileName,url,id) =>{
+        setSelectedImg({fileName,url,id});
     }
     return (
         <div className='img-grid'>
             <Loading loading={loading}></Loading>
             {docs && docs.map(doc => (
-                <div className='img-wrap' key={doc.id} onClick={() =>{handleClick(doc.url,doc.id)} }>
+                <div className='img-wrap' key={doc.id} onClick={() =>{handleClick(doc.fileName,doc.url,doc.id)} }>
                     <img src={doc.url} alt="uploaded"></img>
                 </div>
             ))}
